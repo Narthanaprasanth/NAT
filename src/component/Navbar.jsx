@@ -40,7 +40,7 @@ function Navbar() {
     let scrollPosition = 0;
 
     const interval = setInterval(() => {
-      scrollPosition += 1.2; // smooth speed
+      scrollPosition += 1.2; 
 
       container.scrollLeft = scrollPosition;
 
@@ -48,7 +48,7 @@ function Navbar() {
       if (scrollPosition >= container.scrollWidth / 2) {
         scrollPosition = 0;
       }
-    }, 16); // ~60fps smooth animation
+    }, 16); 
 
     return () => clearInterval(interval);
   }, []);

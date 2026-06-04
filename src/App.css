@@ -332,7 +332,7 @@ body{
   }
 }
 .ban{
-  margin: 0px 20px;
+  margin: 0px 10px;
 }
 
 
@@ -342,7 +342,7 @@ body{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 40px 5%;
+  
   background-color: #ffffff;
   max-width: 1400px;
   margin: 0 auto;
@@ -366,19 +366,22 @@ body{
 .image-container {
   position: relative;
   width: 100%;
-  padding-top: 105%; /* Subtle vertical frame aspect-ratio */
-  background-color: #f8f6f2; /* Mimics natural photo studio setup backdrops */
+  height: 240px;          /* fixed same height for all cards */
+  background-color: #f8f6f2;
   border-radius: 8px;
   overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* image always fills container consistently */
 .product-image {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;   /* IMPORTANT */
+  display: block;
 }
 
 .badge {
@@ -565,10 +568,64 @@ body{
 @media (max-width: 600px) {
   .grid-container {
     grid-template-columns: 1fr;
-    padding: 20px 4%;
+    
   }
 }
 
+
+/* ============ MOBILE CAROUSEL ============ */
+
+.product-track {
+  display: contents; /* default = no change on desktop */
+}
+
+/* MOBILE ONLY */
+@media (max-width: 600px) {
+
+  .product-track {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    padding: 20px 4%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .product-card {
+    min-width: 80%;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  /* hide scrollbar */
+  .product-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-track {
+    scrollbar-width: none;
+  }
+}
+
+
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 290px;   /* ✅ fixed uniform height */
+  background-color: #f8f6f2;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;   /* ✅ key: keeps ratio, crops extra */
+}
 
 /* DETAN DEFENSE */
 /* Container Background & Layout */
@@ -1377,3 +1434,4 @@ body{
   background: #ffe1e1;
   font-weight: bold;
 }
+

@@ -111,9 +111,11 @@ function ProductCard({ product }) {
 export default function ProductGrid() {
   return (
     <section className="grid-container">
-      {productsData.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+      <div className="product-track">
+        {productsData.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
     </section>
   );
 }
