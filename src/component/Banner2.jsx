@@ -11,14 +11,13 @@ function Banner2() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 3000); // 3 seconds
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
     <div className="hero-slider-container">
-      {/* Moving track holding all images inline */}
       <div 
         className="slider-track" 
         style={{ transform: `translateX(-${current * 100}%)` }}

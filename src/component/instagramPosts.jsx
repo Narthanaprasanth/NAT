@@ -1,8 +1,8 @@
 import React from "react";
-import { FaInstagram } from "react-icons/fa"; // Optional: adds standard social icon interaction on hover
+import { FaInstagram } from "react-icons/fa"; 
 
 const instagramPosts = [
-  { id: 1, image: "/images/insta1.jpg", url: "https://instagram.com" }, // Replace with your image paths
+  { id: 1, image: "/images/insta1.jpg", url: "https://instagram.com" }, 
   { id: 2, image: "/images/insta2.jpg", url: "https://instagram.com" },
   { id: 3, image: "/images/insta3.jpg", url: "https://instagram.com" },
   { id: 4, image: "/images/insta4.jpg", url: "https://instagram.com" },
@@ -15,7 +15,6 @@ const instagramPosts = [
 export default function InstagramGrid() {
   return (
     <section className="instagram-section">
-      {/* Header text exactly matching the layout */}
       <div className="instagram-header">
         <h2 className="instagram-title">Follow us on Instagram</h2>
         <a 
@@ -28,7 +27,6 @@ export default function InstagramGrid() {
         </a>
       </div>
 
-      {/* Responsive Photo Grid Grid */}
       <div className="insta-grid">
         {instagramPosts.map((post) => (
           <a
@@ -44,7 +42,6 @@ export default function InstagramGrid() {
                 alt={`Instagram feed post sample ${post.id}`} 
                 className="insta-img" 
               />
-              {/* Dark subtle overlay layer popping up on focus/hover standard across e-commerce */}
               <div className="insta-overlay">
                 <FaInstagram className="insta-icon" />
               </div>

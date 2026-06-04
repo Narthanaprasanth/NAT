@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { FiHeart } from "react-icons/fi";
 
-// Sample data exactly representing the image items
 const productsData = [
   {
     id: 1,
     tag: "NEW LAUNCH",
-    image: "/images/shampoo.png", // Replace with your actual paths
+    image: "/images/shampoo.png", 
     title: "Anti-Dandruff Neem Beracyl™ Navdha Shampoo",
     subtitle: "Clinically Tested 99.9% Dandruff Kill | Advanced FlakeZero™ Technology",
     rating: 4.6,
@@ -56,7 +55,6 @@ const productsData = [
 ];
 
 function ProductCard({ product }) {
-  // State to manage selected size variant per product
   const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
 
   return (

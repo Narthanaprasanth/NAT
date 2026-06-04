@@ -101,10 +101,7 @@ export default function Footer() {
 
       </div>
 
-      {/* Bottom Legal Copyright Bar */}
-      <div className="footer-copyright-bar">
-        <p>© {new Date().getFullYear()} nathabit.in. All Rights Reserved.</p>
-      </div>
+     
     </footer>
   );
 }

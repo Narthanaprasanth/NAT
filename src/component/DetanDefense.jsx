@@ -5,7 +5,7 @@ const bundleProducts = [
   {
     id: 1,
     step: "FADE",
-    image: "/images/ubtan-facewash.png", // Replace with your image paths
+    image: "/images/ubtan-facewash.png", 
     title: "Brightening Ubtan Tikta Face Wash",
     price: 238,
     oldPrice: 317,
@@ -31,17 +31,14 @@ const bundleProducts = [
 export default function DetanDefense() {
   return (
     <section className="detan-section">
-      {/* Header Info */}
       <div className="detan-header">
         <h2 className="detan-title">Detan Defense</h2>
         <span className="detan-subtitle">Summer Care Essentials</span>
       </div>
 
-      {/* Bundle Grid Section */}
       <div className="bundle-container">
         {bundleProducts.map((product, index) => (
           <React.Fragment key={product.id}>
-            {/* Individual Product Column */}
             <div className="bundle-card-wrapper">
               <span className="step-tag">{product.step}</span>
               <div className="bundle-card">
@@ -58,7 +55,6 @@ export default function DetanDefense() {
               </div>
             </div>
 
-            {/* Render a plus separator between cards, but not after the last one */}
             {index < bundleProducts.length - 1 && (
               <div className="plus-separator">+</div>
             )}
@@ -66,7 +62,6 @@ export default function DetanDefense() {
         ))}
       </div>
 
-      {/* Bundle Purchase Bottom Bar */}
       <div className="bundle-footer">
         <div className="total-pricing">
           <div className="pricing-line">
@@ -83,4 +78,4 @@ export default function DetanDefense() {
       </div>
     </section>
   );
-}
+}        
