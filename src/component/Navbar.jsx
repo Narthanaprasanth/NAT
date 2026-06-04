@@ -1,11 +1,57 @@
-import React, { useState } from "react";
-import { FiSearch, FiShoppingBag, FiHeart, FiUser, FiMenu, FiX } from "react-icons/fi";
+import React, { useState, useRef, useEffect } from "react";
+import {
+  FiSearch,
+  FiShoppingBag,
+  FiHeart,
+  FiUser,
+  FiMenu,
+} from "react-icons/fi";
 import { MdFlashOn } from "react-icons/md";
 import { FaFire } from "react-icons/fa";
 
 function Navbar() {
-  const [showSearch, setShowSearch] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const scrollRef = useRef();
+
+  // ITEMS ARRAY (clean + reusable)
+  const items = [
+    { icon: <MdFlashOn />, name: "Flash Deals", highlight: true },
+    { icon: <FaFire />, name: "Trending" },
+    { name: "Summer Care" },
+    { name: "Hair" },
+    { name: "Face" },
+    { name: "Body" },
+    { name: "Eyes & Lips" },
+    { name: "Baby" },
+    { name: "Hair Fall" },
+    { name: "Men" },
+    { name: "Gifting" },
+    { name: "Concern" },
+    { name: "Ingredients" },
+  ];
+
+  // duplicate for infinite effect
+  const loopItems = [...items, ...items];
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let scrollPosition = 0;
+
+    const interval = setInterval(() => {
+      scrollPosition += 1.2; // smooth speed
+
+      container.scrollLeft = scrollPosition;
+
+      // when half reached → reset WITHOUT visible jump
+      if (scrollPosition >= container.scrollWidth / 2) {
+        scrollPosition = 0;
+      }
+    }, 16); // ~60fps smooth animation
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <header className="navbar">
@@ -15,24 +61,17 @@ function Navbar() {
 
         <div className="logo">Nat Habbit</div>
 
-        <div className="search-box desktop-search">
+        <div className="search-box">
           <FiSearch />
           <input type="text" placeholder="Search products..." />
         </div>
 
         <div className="icons">
-
-          <FiSearch
-            className="icon mobile-search-icon"
-            onClick={() => setShowSearch(!showSearch)}
-          />
-
-          {/* MENU ICON (MOBILE) */}
+          <FiSearch className="icon mobile-search-icon" />
           <FiMenu
             className="icon mobile-menu-icon"
-            onClick={() => setMenuOpen(true)}
+            onClick={() => setMenuOpen(!menuOpen)}
           />
-
           <FiHeart className="icon" />
           <FiShoppingBag className="icon" />
           <FiUser className="icon" />
@@ -40,28 +79,17 @@ function Navbar() {
 
       </div>
 
-      {/* MOBILE SEARCH */}
-      
+      {/* CATEGORY CAROUSEL */}
+      <div className="navbar-bottom" ref={scrollRef}>
 
-      {/* CATEGORY BAR */}
-      <div className={`navbar-bottom ${menuOpen ? "mobile-open" : ""}`}>
-
-        {/* CLOSE BUTTON INSIDE MENU */}
-        
-
-        <div className="nav-item highlight"><MdFlashOn /> Flash Deals</div>
-        <div className="nav-item"><FaFire /> Trending</div>
-        <div className="nav-item">Summer Care</div>
-        <div className="nav-item">Hair</div>
-        <div className="nav-item">Face</div>
-        <div className="nav-item">Body</div>
-        <div className="nav-item">Eyes & Lips</div>
-        <div className="nav-item">Baby</div>
-        <div className="nav-item">Hair Fall</div>
-        <div className="nav-item">Men</div>
-        <div className="nav-item">Gifting</div>
-        <div className="nav-item">Concern</div>
-        <div className="nav-item">Ingredients</div>
+        {loopItems.map((item, index) => (
+          <div
+            key={index}
+            className={`nav-item ${item.highlight ? "highlight" : ""}`}
+          >
+            {item.icon} {item.name}
+          </div>
+        ))}
 
       </div>
 
