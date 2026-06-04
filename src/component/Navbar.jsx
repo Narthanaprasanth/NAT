@@ -42,7 +42,7 @@ function Navbar() {
 
       {/* MOBILE SEARCH */}
       
-
+<p>k</p>
       {/* CATEGORY BAR */}
       <div className={`navbar-bottom ${menuOpen ? "mobile-open" : ""}`}>
 
