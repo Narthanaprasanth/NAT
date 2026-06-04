@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { FiSearch, FiShoppingBag, FiHeart, FiUser } from "react-icons/fi";
+import { FiSearch, FiShoppingBag, FiHeart, FiUser, FiMenu, FiX } from "react-icons/fi";
 import { MdFlashOn } from "react-icons/md";
 import { FaFire } from "react-icons/fa";
 
 function Navbar() {
   const [showSearch, setShowSearch] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="navbar">
@@ -14,7 +15,6 @@ function Navbar() {
 
         <div className="logo">Nat Habbit</div>
 
-        {/* DESKTOP SEARCH */}
         <div className="search-box desktop-search">
           <FiSearch />
           <input type="text" placeholder="Search products..." />
@@ -22,10 +22,15 @@ function Navbar() {
 
         <div className="icons">
 
-          {/* MOBILE SEARCH ICON ONLY */}
           <FiSearch
             className="icon mobile-search-icon"
             onClick={() => setShowSearch(!showSearch)}
+          />
+
+          {/* MENU ICON (MOBILE) */}
+          <FiMenu
+            className="icon mobile-menu-icon"
+            onClick={() => setMenuOpen(true)}
           />
 
           <FiHeart className="icon" />
@@ -35,7 +40,7 @@ function Navbar() {
 
       </div>
 
-      {/* MOBILE SEARCH BAR (toggle) */}
+      {/* MOBILE SEARCH */}
       {showSearch && (
         <div className="mobile-search-box">
           <FiSearch />
@@ -44,16 +49,13 @@ function Navbar() {
       )}
 
       {/* CATEGORY BAR */}
-      <div className="navbar-bottom">
+      <div className={`navbar-bottom ${menuOpen ? "mobile-open" : ""}`}>
 
-        <div className="nav-item highlight">
-          <MdFlashOn /> Flash Deals
-        </div>
+        {/* CLOSE BUTTON INSIDE MENU */}
+        
 
-        <div className="nav-item">
-          <FaFire /> Trending
-        </div>
-
+        <div className="nav-item highlight"><MdFlashOn /> Flash Deals</div>
+        <div className="nav-item"><FaFire /> Trending</div>
         <div className="nav-item">Summer Care</div>
         <div className="nav-item">Hair</div>
         <div className="nav-item">Face</div>
@@ -67,6 +69,7 @@ function Navbar() {
         <div className="nav-item">Ingredients</div>
 
       </div>
+
     </header>
   );
 }

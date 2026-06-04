@@ -105,17 +105,44 @@ body{
   padding: 10px 5%;
   max-width: 1400px;
   margin: 0 auto;
-  overflow-x: auto; /* Enables swipe/scroll for long categories list */
-  white-space: nowrap; /* Keeps items in a single row */
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 /* Hide scrollbars for a cleaner look while keeping scroll functionality */
 .navbar-bottom::-webkit-scrollbar {
   display: none;
 }
+/* CATEGORY BAR BASE (KEEP SCROLL) */
 .navbar-bottom {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  padding: 10px 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  overflow-x: auto;
+  white-space: nowrap;
+
+  scroll-behavior: smooth;       /* smooth scrolling */
+  -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+  scrollbar-width: thin;
+}
+
+/* Hide scrollbar but keep scrolling */
+.navbar-bottom::-webkit-scrollbar {
+  height: 4px;
+}
+
+.navbar-bottom::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.navbar-bottom::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* Navigation Item */
@@ -204,46 +231,24 @@ body{
     margin-left: 10px;
     background: transparent;
   }
-
-  /* CATEGORY MENU BECOMES DROPDOWN */
-  .navbar-bottom {
-    padding: 0px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background: white;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
+   .navbar-bottom {
+    gap: 14px;
+    padding: 10px 12px;
   }
 
-  /* OPEN STATE (controlled by React class) */
-  .navbar-bottom.mobile-open {
-    max-height: 500px;
-    padding: 10px 16px;
-  }
-
-  /* CATEGORY ITEMS STACK VERTICALLY */
   .nav-item {
-    padding: 12px 0;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-  }
-
-  /* REMOVE HORIZONTAL SCROLL ON MOBILE */
-  .navbar-bottom {
-    overflow-x: hidden;
-    white-space: normal;
+    font-size: 13px;
+    flex: 0 0 auto;   /* prevents shrinking */
+    padding: 6px 10px;
+    border-radius: 20px;
   }
   .main-footer{
     position: relative;
     top: 180px;
   }
+  
 }
+
 /* BANNER */
 /* Container for the banner */
 .banner-container {
@@ -272,6 +277,13 @@ body{
   border-radius: 20px;
   object-fit: cover;
 }
+.mobile-menu-icon {
+  display: none;
+}
+
+.mobile-close {
+  display: none;
+}
 
 /* Optional: Keyframe animation to make the image fade in smoothly on every state change */
 @keyframes fadeIn {
@@ -291,6 +303,17 @@ body{
   }
   .banner-image{
     object-fit: fill;
+  }
+   .mobile-menu-icon {
+    display: block;
+  }
+
+  .mobile-close {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 16px;
+    font-size: 22px;
+    cursor: pointer;
   }
  
 }
