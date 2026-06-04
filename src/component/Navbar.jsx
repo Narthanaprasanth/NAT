@@ -41,12 +41,7 @@ function Navbar() {
       </div>
 
       {/* MOBILE SEARCH */}
-      {showSearch && (
-        <div className="mobile-search-box">
-          <FiSearch />
-          <input type="text" placeholder="Search products..." />
-        </div>
-      )}
+      
 
       {/* CATEGORY BAR */}
       <div className={`navbar-bottom ${menuOpen ? "mobile-open" : ""}`}>
