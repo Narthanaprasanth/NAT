@@ -249,6 +249,7 @@ body{
   
 }
 
+
 /* BANNER */
 /* Container for the banner */
 .banner-container {
@@ -649,12 +650,13 @@ body{
   background-color: #f9f9f9;
   border-radius: 6px;
   overflow: hidden;
+  object-fit: fill;
 }
 
 .bundle-img-box img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .bundle-info {
@@ -1147,6 +1149,7 @@ body{
   .instagram-title {
     font-size: 26px;
   }
+  
 }
 
 
